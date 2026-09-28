@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class GradeCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter the student's mark
+        System.out.print("Enter student mark: ");
+        double mark = scanner.nextDouble();
+
+        // Check if the student passed or failed (pass mark: 70)
+        if (mark >= 70) {
+            System.out.println("Status: PASSED");
+
+            // Assign a grade if the mark is above 90
+            if (mark > 90) {
+                System.out.println("Grade: Grade A (Excellent performance!)");
+            } else {
+                System.out.println("Grade: Standard Pass");
+            }
+        } else {
+            System.out.println("Status: FAILED");
+            System.out.println("Grade: No Grade (Mark is below passing score of 70)");
+        }
+
+        scanner.close();
+    }
+}
