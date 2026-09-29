@@ -1,0 +1,38 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class AnagramGroups {
+
+    public static int countAnagramGroups(String[] strings) {
+        if (strings == null || strings.length == 0) {
+            return 0;
+        }
+
+        // Use a Set to store the canonical (sorted) key for each unique anagram group
+        Set<String> uniqueGroups = new HashSet<>();
+
+        for (String str : strings) {
+            // Convert string to character array and sort it
+            char[] charArray = str.toCharArray();
+            Arrays.sort(charArray);
+            
+            // Create a key from the sorted character array
+            String sortedKey = new String(charArray);
+            
+            // Add key to set (duplicates will automatically be ignored)
+            uniqueGroups.add(sortedKey);
+        }
+
+        // The number of unique keys represents the number of anagram groups
+        return uniqueGroups.size();
+    }
+
+    public static void main(String[] args) {
+        // Example Usage
+        String[] input = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        
+        int groupCount = countAnagramGroups(input);
+        System.out.println("Number of anagram groups: " + groupCount); // Output: 3
+    }
+}
